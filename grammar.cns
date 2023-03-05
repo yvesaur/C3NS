@@ -1,7 +1,12 @@
-<factor> := INT|FLOAT
-         := (PLUS|MINUS) factor
+<atom> := INT|FLOAT
+       := <LPAREN> <expr> <RPAREN>
+
+<power> := <atom> (<POW> <factor>)*
+
+<factor> := (PLUS|MINUS) factor
+         := <power>
 
 <term> := <factor> ((MUL|DIV) <factor>)*
 
 <expr> := <term> ((PLUS|MINUS) <term>)*
-       := LPAREN <expr> RPAREN
+

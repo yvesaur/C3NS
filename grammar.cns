@@ -8,6 +8,11 @@
 
 <term> := <factor> ((MUL|DIV) <factor>)*
 
-<expr> := <term> ((PLUS|MINUS) <term>)*
-       := <keyword>:<var> <ident> <eq> <expr>
+<arithmetic> := <term> ((PLUS|MINUS) <term>)*
+
+<comparison>  := NOT <comparison>
+              := <arithmetic> ((EE|LT|GT|LTE|GTE) <arithmetic>)*
+
+<expr> := <keyword>:<var> <ident> <eq> <expr>
+       := <comparison> ((<keyword>:AND | <keyword>:OR) <comparison>)*
 

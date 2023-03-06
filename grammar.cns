@@ -1,3 +1,5 @@
+<func-def> := <keyword>:FUNC <identifier>? ( <identifier> (, <identifier>)*)? ) -> <expr>
+
 <while-expr> := <keyword>:WHILE ( <expr> ) { <expr> }
 
 <for-expr> := <keyword>:FOR ( <identifier> = <expr> ) { <expr> }
@@ -12,8 +14,11 @@
        := <if-expr>
        := <for-expr>
        := <while-expr>
+       := <func-def>
 
-<power> := <atom> (<POW> <factor>)*
+<call> := <atom> ( ( <expr> (, <expr> )* )? )?
+
+<power> := <call> (<POW> <factor>)*
 
 <factor> := (PLUS|MINUS) factor
          := <power>

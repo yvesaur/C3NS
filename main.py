@@ -1,10 +1,10 @@
-import interpreter
+import compiler
 
 while True:
 	text = input('> ')
-	result, error = interpreter.run('<stdin>', text)
+	result, error = compiler.run('<stdin>', text)
 
 	if error: print(error.as_string())
-	else: print(result)
+	elif result: print(result)
     
 

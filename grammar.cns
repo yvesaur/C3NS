@@ -1,3 +1,8 @@
+<if-expr> := <keyword>:IF ( <expr> ) { <expr> }
+          := (<keyword>:ELIF ( <expr> ) { <expr> })*
+          := (<keyword>:ELSE { <expr> })?
+
+
 <atom> := INT|FLOAT|IDENTIFIER
        := <LPAREN> <expr> <RPAREN>
 

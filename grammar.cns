@@ -9,8 +9,11 @@
           := (<keyword>:ELIF ( <expr> ) { <expr> })*
           := (<keyword>:ELSE { <expr> })?
 
+<list-expr> := [ ( <expr> (, <expr> )* )? ]
+
 <atom> := INT|FLOAT|IDENTIFIER|STRING
        := <LPAREN> <expr> <RPAREN>
+       := <list-expr>
        := <if-expr>
        := <for-expr>
        := <while-expr>

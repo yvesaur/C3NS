@@ -1,10 +1,17 @@
+<while-expr> := <keyword>:WHILE ( <expr> ) { <expr> }
+
+<for-expr> := <keyword>:FOR ( <identifier> = <expr> ) { <expr> }
+           := <keyword>:DWHILE { <expr> } <keyword>:WHILE ( <expr> )
+
 <if-expr> := <keyword>:IF ( <expr> ) { <expr> }
           := (<keyword>:ELIF ( <expr> ) { <expr> })*
           := (<keyword>:ELSE { <expr> })?
 
-
 <atom> := INT|FLOAT|IDENTIFIER
        := <LPAREN> <expr> <RPAREN>
+       := <if-expr>
+       := <for-expr>
+       := <while-expr>
 
 <power> := <atom> (<POW> <factor>)*
 

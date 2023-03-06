@@ -9,7 +9,7 @@
           := (<keyword>:ELIF ( <expr> ) { <expr> })*
           := (<keyword>:ELSE { <expr> })?
 
-<atom> := INT|FLOAT|IDENTIFIER
+<atom> := INT|FLOAT|IDENTIFIER|STRING
        := <LPAREN> <expr> <RPAREN>
        := <if-expr>
        := <for-expr>

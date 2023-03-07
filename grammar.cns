@@ -1,13 +1,27 @@
-<func-def> := <keyword>:FUNC <identifier>? ( <identifier> (, <identifier>)*)? ) -> <expr>
+<func-def> := <keyword>:FUNC <identifier>? ( <identifier> (, <identifier>)*)? ) 
+              -> <expr>
+           |  { <newline> <statement> }
 
-<while-expr> := <keyword>:WHILE ( <expr> ) { <expr> }
+<while-expr> := <keyword>:WHILE ( <expr> ) { 
+                <expr> }
+             |  <newline> <statement> }
 
-<for-expr> := <keyword>:FOR ( <identifier> = <expr> ) { <expr> }
-           := <keyword>:DWHILE { <expr> } <keyword>:WHILE ( <expr> )
+<for-expr> := <keyword>:FOR ( <identifier> = <expr> ) { 
+              <expr> }
+           |  <newline> <statement> } 
 
-<if-expr> := <keyword>:IF ( <expr> ) { <expr> }
-          := (<keyword>:ELIF ( <expr> ) { <expr> })*
-          := (<keyword>:ELSE { <expr> })?
+<if-expr-else> := <keyword>:ELSE {
+                  <expr> }
+               |  <newline> <statement> }
+
+<if-expr-elif> := <keyword>:ELIF ( <expr> ) { 
+                  <expr> } <if-expr-elif>|<if-expr-else>
+               |  <newline> <statement> } <if-expr-elif>|<if-expr-else>
+
+<if-expr> := <keyword>:IF ( <expr> ) { 
+             <expr> } <if-expr-elif>|<if-expr-else>
+          | <newline> <statement> } <if-expr-elif>|<if-expr-else>
+
 
 <list-expr> := [ ( <expr> (, <expr> )* )? ]
 
@@ -35,4 +49,6 @@
 
 <expr> := <keyword>:<var> <ident> <eq> <expr>
        := <comparison> ((<keyword>:AND | <keyword>:OR) <comparison>)*
+
+<statement> := <newline>* <expr> (<newline>+ <expr>)* <newline>*
 
